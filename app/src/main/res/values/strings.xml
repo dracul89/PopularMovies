@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="sort_by">sort by</string>
+    <string name="settings_sort_by">sort_by</string>
+    <string name="summary_settings">Sort by top rated or top voted</string>
+    <string name="most_voted">Most voted</string>
+    <string name="popular_movies">Popular movies</string>
+</resources>
