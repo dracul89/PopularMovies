@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.imnotfunnyeither.popularmovies.BuildConfig;
 import com.example.imnotfunnyeither.popularmovies.contracts.PopularMoviesContract;
+import com.example.imnotfunnyeither.popularmovies.model.PopularMovie;
 import com.example.imnotfunnyeither.popularmovies.utils.NetworkUtils;
 
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 public class NetworkAsyncTask extends AsyncTask<PopularMoviesContract.View,Void,String> {
     private static final String TAG = PopularMoviesPresenter.class.getSimpleName();
@@ -22,6 +24,7 @@ public class NetworkAsyncTask extends AsyncTask<PopularMoviesContract.View,Void,
     private static final String POPULAR_MOVIE = "/3/movie/popular";
     private static final String METHOD_GET = "GET";
     private static final String TOP_RATED = "/3/movie/top_rated";
+    public static final String ERROR_COMMUNICATING_WITH_SERVICE = "Error communicating with service";
     private PopularMoviesContract.View view;
 
     @Override
@@ -76,6 +79,12 @@ public class NetworkAsyncTask extends AsyncTask<PopularMoviesContract.View,Void,
         if (s != null) {
             Log.d("Test",s);
         }
-        view.getPoplarMoviesAdapter().setMovies(NetworkUtils.getMovies(s));
+        List<PopularMovie> movies = NetworkUtils.getMovies(s);
+
+        if (!movies.isEmpty()) {
+            view.getPoplarMoviesAdapter().setMovies(movies);
+        } else {
+            view.makeErrorToast(ERROR_COMMUNICATING_WITH_SERVICE);
+        }
     }
 }

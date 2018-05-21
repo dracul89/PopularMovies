@@ -6,6 +6,8 @@ public interface PopularMoviesContract {
     public interface View {
         PopularMoviesAdapter getPoplarMoviesAdapter();
         boolean isPopularSorted();
+
+        void makeErrorToast(String error);
     }
     public interface Presenter<T> {
         void getMovies();

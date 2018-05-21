@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.imnotfunnyeither.popularmovies.adapter.PopularMoviesAdapter;
 import com.example.imnotfunnyeither.popularmovies.contracts.PopularMoviesContract;
@@ -66,6 +67,11 @@ public class MainActivity extends AppCompatActivity implements PopularMoviesCont
             return true;
         }
         return !sharedPreferences.getBoolean(getString(R.string.settings_sort_by),false);
+    }
+
+    @Override
+    public void makeErrorToast(String error) {
+        Toast.makeText(this,error,Toast.LENGTH_SHORT).show();
     }
 
     @Override
