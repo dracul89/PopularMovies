@@ -73,7 +73,9 @@ public class NetworkAsyncTask extends AsyncTask<PopularMoviesContract.View,Void,
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        Log.d("Test",s);
+        if (s != null) {
+            Log.d("Test",s);
+        }
         view.getPoplarMoviesAdapter().setMovies(NetworkUtils.getMovies(s));
     }
 }

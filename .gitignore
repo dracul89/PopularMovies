@@ -10,3 +10,5 @@
 .externalNativeBuild
 deleteme.json
 libs/
+/gradlew.bat
+.idea/

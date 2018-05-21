@@ -33,6 +33,9 @@ public class NetworkUtils {
     private NetworkUtils() {}
 
     public static List<PopularMovie> getMovies(String jsonResponse) {
+        if (jsonResponse == null) {
+            return new ArrayList<>();
+        }
         List<PopularMovie> movies = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(jsonResponse);
