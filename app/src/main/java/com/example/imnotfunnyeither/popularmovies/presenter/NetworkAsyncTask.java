@@ -46,12 +46,12 @@ public class NetworkAsyncTask extends AsyncTask<PopularMoviesContract.View,Void,
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             String line;
-            StringBuffer stringBuffer = new StringBuffer();
+            StringBuilder stringBuilder = new StringBuilder();
 
             while ((line = bufferedReader.readLine()) != null) {
-                stringBuffer.append(line+System.lineSeparator());
+                stringBuilder.append(line+System.lineSeparator());
             }
-            return stringBuffer.toString();
+            return stringBuilder.toString();
 
         } catch (IOException e) {
             Log.e(TAG,"IO Exception",e);

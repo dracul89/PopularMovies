@@ -6,11 +6,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.imnotfunnyeither.popularmovies.R;
+import com.example.imnotfunnyeither.popularmovies.utils.NetworkConstants;
 import com.squareup.picasso.Picasso;
 
 public class PopularMoviesViewHolder extends RecyclerView.ViewHolder {
-    public static final String IMAGE_BASE_URL = "http://image.tmdb.org/t/p/";
-    public static final String SCREEN_WIDTH = "w185";
     private final Context context;
     private ImageView moviePoster;
 
@@ -23,6 +22,6 @@ public class PopularMoviesViewHolder extends RecyclerView.ViewHolder {
     public void setMoviePoster(String path) {
         int height = itemView.getContext().getResources().getDisplayMetrics().heightPixels/2;
         int width = itemView.getContext().getResources().getDisplayMetrics().widthPixels/2;
-        Picasso.with(context).load(IMAGE_BASE_URL+SCREEN_WIDTH+path).resize(width,height).into(moviePoster);
+        Picasso.with(context).load(NetworkConstants.IMAGE_BASE_URL+ NetworkConstants.SCREEN_WIDTH+path).resize(width,height).into(moviePoster);
     }
 }

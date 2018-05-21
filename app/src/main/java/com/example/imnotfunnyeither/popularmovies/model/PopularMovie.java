@@ -165,7 +165,9 @@ public class PopularMovie implements Serializable {
         private String overview;
         private String releaseDate;
 
-        public PopularMovieBuilder(){}
+        public PopularMovieBuilder(){
+            //used for builder pattern
+        }
 
         public PopularMovieBuilder voteCount(int voteCount) {
             this.voteCount = voteCount;

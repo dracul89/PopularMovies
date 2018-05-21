@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements PopularMoviesCont
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         popularMoviesAdapter = new PopularMoviesAdapter();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_movies);
+        RecyclerView recyclerView = findViewById(R.id.rv_movies);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(popularMoviesAdapter);

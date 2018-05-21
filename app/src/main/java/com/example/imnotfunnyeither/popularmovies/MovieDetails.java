@@ -7,14 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.imnotfunnyeither.popularmovies.adapter.PopularMoviesViewHolder;
 import com.example.imnotfunnyeither.popularmovies.databinding.ActivityMovieDetailsBinding;
 import com.example.imnotfunnyeither.popularmovies.model.PopularMovie;
+import com.example.imnotfunnyeither.popularmovies.utils.NetworkConstants;
 import com.squareup.picasso.Picasso;
 
 public class MovieDetails extends AppCompatActivity {
 
     public static final String MOVIE = "movie_details";
+    public static final String OF_TEN = "/10";
+    public static final double RATIO = .4;
+    public static final int HALF = 2;
     ActivityMovieDetailsBinding dataBinding;
     private PopularMovie popularMovie;
 
@@ -35,10 +38,10 @@ public class MovieDetails extends AppCompatActivity {
         }
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details);
         dataBinding.setMovie(popularMovie);
-        double pictureWidth =  getResources().getDisplayMetrics().widthPixels*.4;
-        double pictureHeight = (pictureWidth/2)+pictureWidth;
+        double pictureWidth =  getResources().getDisplayMetrics().widthPixels* RATIO;
+        double pictureHeight = (pictureWidth/ HALF)+pictureWidth;
         Picasso.with(this)
-                .load(PopularMoviesViewHolder.IMAGE_BASE_URL+PopularMoviesViewHolder.SCREEN_WIDTH+popularMovie.getPosterPath())
+                .load(NetworkConstants.IMAGE_BASE_URL+ NetworkConstants.SCREEN_WIDTH+popularMovie.getPosterPath())
                 .resize((int)pictureWidth, (int)pictureHeight)
                 .into((ImageView) findViewById(R.id.iv_movie_poster_details));
         TextView yearTextView = findViewById(R.id.tv_year);
@@ -46,7 +49,7 @@ public class MovieDetails extends AppCompatActivity {
         TextView votesTextView = findViewById(R.id.tv_votes);
         StringBuilder builder = new StringBuilder();
         builder.append(popularMovie.getVoteAverage())
-                .append("/10");
+                .append(OF_TEN);
         votesTextView.setText(builder.toString());
     }
 }
